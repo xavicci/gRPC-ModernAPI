@@ -43,7 +43,7 @@ compile-rest-server:
 
 .PHONY: compile-grpc-server
 compile-grpc-server:
-	go build -a -ldflags "-X main.version=$(GRPC_BOOKS_SERVER_APP_VERSION) -X main.commit=$(APP_COMMIT)" -o ./books-app/build/out/$(GRPC_BOOKS_SERVER_APP_NAME) books-app/cmd/grpc-books-server/main.go
+	go build -o ./build/out/$(GRPC_BOOKS_SERVER_APP_NAME) ./cmd/grpc-books-server/main.go
 
 .PHONY: compile-grpc-client
 compile-grpc-client:
@@ -51,7 +51,7 @@ compile-grpc-client:
 
 .PHONY: compile-rest-client
 compile-rest-client:
-	go build -a -ldflags "-X main.version=$(REST_BOOKS_CLIENT_APP_VERSION) -X main.commit=$(APP_COMMIT)" -o ./books-app/build/out/$(REST_BOOKS_CLIENT_APP_NAME) books-app/cmd/rest-books-client/main.go
+	go build -o ./books-app/build/out/$(REST_BOOKS_CLIENT_APP_NAME) books-app/cmd/rest-books-client/main.go
 
 
 .PHONY: deps
@@ -85,7 +85,7 @@ main-http-serve:
 
 .PHONY: main-grpc-serve
 main-grpc-serve:
-	go run books-app/cmd/grpc-books-server/main.go -configFile=$(GRPC_CONFIG_FILE)
+	go run ./cmd/grpc-books-server/main.go -configFile ./configs/grpc-books-server.yaml
 
 .PHONY: execute-grpc-client
 execute-grpc-client:

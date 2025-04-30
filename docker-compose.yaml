@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: deploy/dockerfiles/Dockerfile
     ports:
-      - "50051:50051"
+      - "50052:50051"
     links:
       - db
   db:
@@ -17,7 +17,7 @@ services:
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=books_db
     ports:
-      - '5432:5432'
+      - '54321:5432'
     volumes: 
       - db:/var/lib/postgresql/data
 volumes:

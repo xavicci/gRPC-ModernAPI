@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"path/filepath"
+	"runtime"
 	"strings"
 
 	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/configs"
@@ -76,9 +76,11 @@ func initMigrate(dbConn *sql.DB, directory string) (*migrate.Migrate, error) {
 func getSourcePath(directory string) (string, error) {
 	directory = strings.TrimPrefix(directory, cutSet)
 
-	absPath, err := filepath.Abs(directory)
-	if err != nil {
-		return "", err
+	// Usar la ruta relativa directamente
+	absPath := directory
+	if runtime.GOOS == "windows" {
+		absPath = strings.ReplaceAll(absPath, "\\", "/")
 	}
+
 	return fmt.Sprintf("%s%s", cutSet, absPath), nil
 }

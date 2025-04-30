@@ -1,4 +1,4 @@
-FROM public.ecr.aws/bitnami/golang:1.20.4 AS builder
+FROM golang:1.23.0 as builder
 
 WORKDIR /service
 
@@ -8,6 +8,6 @@ COPY . .
 RUN make compile-grpc-server
 
 FROM alpine:3.14.2
-COPY --from=builder ./service/books-app/build/out/grpc-books-server grpc-books-server
-COPY --from=builder ./service/books-app/configs/grpc-books-server.yaml grpc-books-server.yaml
-ENTRYPOINT ["./grpc-books-server", "-configFile", "grpc-books-server.yaml"]
+COPY --from=builder /service/build/out/grpc-books-server /grpc-books-server
+COPY --from=builder /service/configs/grpc-books-server.yaml /grpc-books-server.yaml
+ENTRYPOINT ["/grpc-books-server", "-configFile", "/grpc-books-server.yaml"]

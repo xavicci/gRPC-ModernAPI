@@ -1,17 +1,17 @@
 app:
   serviceName: 'grpc-books-server'
   host: '127.0.0.1'
-  port: 50051
+  port: 50052
 db:
   name: books_db
   schema: 'public'
   user: postgres
   host: 'localhost'
   password: 'mysecretpassword'
-  port: 5432
+  port: 54321
   logMode: true
   sslMode: 'disable'
-  migrationPath: './scripts'
+  migrationPath: 'scripts'
   connectionPool:
     maxOpenConnections: 30
     maxIdleConnections: 10
