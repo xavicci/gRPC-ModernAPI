@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"log"
 
-	"moderngrpc/internal/pkg/model"
-	"moderngrpc/internal/pkg/proto"
-	"moderngrpc/internal/pkg/repo"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/model"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/proto"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/repo"
 )
 
 type App struct {

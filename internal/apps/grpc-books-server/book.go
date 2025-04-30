@@ -5,12 +5,12 @@ import (
 	"log"
 	"net"
 
-	"moderngrpc/internal/pkg/configs"
-	"moderngrpc/internal/pkg/db"
-	"moderngrpc/internal/pkg/db/migrations"
-	"moderngrpc/internal/pkg/proto"
-	"moderngrpc/internal/pkg/repo"
-	"moderngrpc/internal/pkg/service"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/configs"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/db"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/db/migrations"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/proto"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/repo"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/service"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

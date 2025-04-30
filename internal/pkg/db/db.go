@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"moderngrpc/internal/pkg/configs"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/configs"
 
 	"github.com/pkg/errors"
 	"gorm.io/driver/postgres"

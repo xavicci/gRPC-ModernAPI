@@ -1,7 +1,7 @@
 package repo
 
 import (
-	"moderngrpc/internal/pkg/model"
+	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/model"
 
 	"gorm.io/gorm"
 )
