@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  grpc-book-server:
+    build:
+      context: .
+      dockerfile: deploy/dockerfiles/Dockerfile
+    ports:
+      - "50051:50051"
+    links:
+      - db
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=books_db
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
