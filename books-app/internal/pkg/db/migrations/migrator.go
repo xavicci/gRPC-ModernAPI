@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/configs"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/configs"
 
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/postgres"

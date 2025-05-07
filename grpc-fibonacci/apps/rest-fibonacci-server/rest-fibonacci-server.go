@@ -1,5 +1,7 @@
 package restfibonacciserver
 
+import "github.com/gorilla/mux"
+
 type App struct {
 	asyncStores map[string]*AsyncStore
 }

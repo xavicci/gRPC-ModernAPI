@@ -1,7 +1,7 @@
 package repo
 
 import (
-	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/model"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/model"
 
 	"gorm.io/gorm"
 )

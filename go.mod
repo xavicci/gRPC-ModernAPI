@@ -4,6 +4,7 @@ go 1.23.0
 
 require (
 	github.com/golang-migrate/migrate/v4 v4.18.3
+	github.com/gorilla/mux v1.7.4
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/viper v1.20.1

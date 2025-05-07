@@ -5,12 +5,12 @@ import (
 	"log"
 	"net"
 
-	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/configs"
-	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/db"
-	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/db/migrations"
-	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/proto"
-	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/repo"
-	"github.com/xavicci/gRPC-ModernAPI/internal/pkg/service"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/configs"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/db"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/db/migrations"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/proto"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/repo"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/service"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
