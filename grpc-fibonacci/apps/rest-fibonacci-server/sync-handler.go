@@ -1,7 +1,11 @@
 package restfibonacciserver
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -13,5 +17,42 @@ type SyncResponse struct {
 
 func (a *App) fibonacciSyncHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	number
+	number := vars["number"]
+
+	numFibonacci, err := strconv.Atoi(number)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+	}
+	fibonacciNumbers := make([]int, numFibonacci)
+	now := time.Now()
+
+	for i := 0; i < numFibonacci; i++ {
+		fibonacciNumbers[i] = fib(i)
+	}
+	timeTaken := time.Since(now).Seconds()
+
+	response := SyncResponse{
+		TimeTaken:        fmt.Sprintf("%f seconds", timeTaken),
+		FibonacciNumbers: fibonacciNumbers,
+	}
+
+	responseJSON, err := json.Marshal(response)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(responseJSON)
+
+}
+
+func fib(n int) int {
+	if n <= 0 {
+		return 0
+	} else if n == 1 {
+		return 1
+	} else {
+		return fib(n-1) + fib(n-2)
+	}
 }
