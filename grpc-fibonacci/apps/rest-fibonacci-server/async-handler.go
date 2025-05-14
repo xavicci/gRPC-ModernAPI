@@ -11,6 +11,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type AsyncResponse struct {
+	RequestId        string `json:"requestid"`
+	FibonacciNumbers []int  `json:"fibonacciNumbers"`
+	EndOfResponse    bool   `json:"endOfResponse"`
+}
+
 type AsyncStore struct {
 	mu             sync.Mutex
 	current        int
@@ -18,16 +24,8 @@ type AsyncStore struct {
 	numbers        []int
 }
 
-type AsyncResponse struct {
-	RequestId        string `json:"requestId"`
-	FibonacciNumbers []int  `json:"fibonacciNumbers"`
-	EndOfResponse    bool   `json:"endOfResponse"`
-}
-
-func NewAsyncStore(requestdRange int) *AsyncStore {
-	return &AsyncStore{
-		requestedRange: requestdRange,
-	}
+func NewAsyncStore(requestedRange int) *AsyncStore {
+	return &AsyncStore{requestedRange: requestedRange}
 }
 
 func (ns *AsyncStore) Write(number, current int) {
@@ -93,9 +91,8 @@ func (a *App) fibonacciAsyncHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) fibAsync(n int, reqId string) {
-	for i := 0; i < n; i++ {
+	for i := 0; i <= n; i++ {
 		fmt.Printf("for %s computing and writing fib of %d\n", reqId, i)
 		a.asyncStores[reqId].Write(fib(i), i)
 	}
-
 }

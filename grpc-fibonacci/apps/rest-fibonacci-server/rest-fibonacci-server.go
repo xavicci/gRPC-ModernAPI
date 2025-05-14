@@ -21,12 +21,10 @@ func NewApp() *App {
 func (a *App) Start() {
 	router := mux.NewRouter()
 	router.Use(generateRequestIDMiddleware)
-	router.HandleFunc("fibonacci/sync/{number:[0-9]+}", a.fibonacciSyncHandler)
-	router.HandleFunc("fibonacci/async/{number:[0-9]+}", a.fibonacciAsyncHandler)
-	router.Handle("/", router)
-	fmt.Println("Server is running on:6080")
-	http.ListenAndServe(":6080", nil)
-
+	router.HandleFunc("/fibonacci/sync/{number:[0-9]+}", a.fibonacciSyncHandler)
+	router.HandleFunc("/fibonacci/async/{number:[0-9]+}", a.fibonacciAsyncHandler)
+	fmt.Println("Server is running on :6080")
+	http.ListenAndServe(":6080", router)
 }
 
 func generateRequestIDMiddleware(next http.Handler) http.Handler {
