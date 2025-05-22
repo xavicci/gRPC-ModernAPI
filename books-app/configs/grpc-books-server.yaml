@@ -11,7 +11,7 @@ db:
   port: 54321
   logMode: true
   sslMode: 'disable'
-  migrationPath: 'scripts'
+  migrationPath: '.\books-app\scripts'
   connectionPool:
     maxOpenConnections: 30
     maxIdleConnections: 10

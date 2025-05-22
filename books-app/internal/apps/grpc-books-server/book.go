@@ -8,6 +8,7 @@ import (
 	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/configs"
 	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/db"
 	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/db/migrations"
+	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/middleware"
 	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/proto"
 	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/repo"
 	"github.com/xavicci/gRPC-ModernAPI/books-app/internal/pkg/service"
@@ -58,7 +59,10 @@ func (a *Server) Start() {
 	}
 
 	opts := []grpc.ServerOption{}
+	middlewareOpts := middleware.ProvideGrpcMiddlewareServerOpts()
+	opts = append(opts, middlewareOpts...)
 	s := grpc.NewServer(opts...)
+
 	proto.RegisterBookServiceServer(s, server)
 
 	reflection.Register(s)
