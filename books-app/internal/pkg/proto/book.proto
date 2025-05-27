@@ -44,6 +44,12 @@ service BookService{
   rpc UpdateBook(Book) returns (UpdateBookResponse) {};
 }
 
+message Review {
+  string reviewer = 1;
+  string comment = 2;
+  int32 rating = 3;
+}
+
 message SubmitReviewRequest {
   int32 isbn = 1;
   string reviewer = 2;
@@ -86,3 +92,4 @@ service BookInfoService {
   // Unary RPC to get book information with reviews by ID
   rpc GetBookInfoWithReviews(GetBookInfoRequest) returns (GetBookInfoResponse);
 }
+
